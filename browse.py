@@ -18,9 +18,9 @@ Commands:
 
 """
 import sys
-from workflow import Workflow3, ICON_WEB, PasswordNotFound
-from workflow.notify import notify
-from docopt import docopt
+from deps.workflow import Workflow3, ICON_WEB, PasswordNotFound
+from deps.workflow.notify import notify
+from deps.docopt import docopt
 from github import fetch_repos
 from constants import KEYCHAIN_GITHUB_TOKEN, API_ROOT, REPO_CACHE
 

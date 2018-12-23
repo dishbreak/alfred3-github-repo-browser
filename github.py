@@ -1,4 +1,4 @@
-from workflow import web
+from deps.workflow import web
 from collections import defaultdict
 import re
 
