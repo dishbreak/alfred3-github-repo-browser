@@ -7,14 +7,17 @@ Usage:
 	browse.py token API_TOKEN
 	browse.py list QUERY
 	browse.py list
+	browse.py clean
 
 Commands:
 	token - configure a Personal Access Token
 	list - show repos using the configrued token
+	clean - remove configured 
 
 """
 import sys
 from workflow import web, Workflow, ICON_WEB, PasswordNotFound
+from workflow.notify import notify
 from collections import defaultdict
 from docopt import docopt
 import re
@@ -66,7 +69,14 @@ def main(wf):
 
 	if args['token']:
 		wf.save_password(__KEYCHAIN_GITHUB_TOKEN, args['API_TOKEN'])
-
+		notify("Saved API Token to Keychain", "Use 'githubclean' to remove.")
+		return 0
+	if args['clean']:
+		try:
+			wf.delete_password(__KEYCHAIN_GITHUB_TOKEN)
+			notify("Removed API Token from Keychain", "Use 'githubtoken' to add a new token.")
+		except PasswordNotFound as e:
+			wf.logger.info("No token to delete!")
 		return 0
 
 	try:
