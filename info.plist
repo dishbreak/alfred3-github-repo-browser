@@ -81,7 +81,7 @@
 	<key>createdby</key>
 	<string>Vishal Kotcherlakota</string>
 	<key>description</key>
-	<string>List GitHub Repos from an Organization</string>
+	<string>Workflows for Github</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -138,27 +138,6 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>githubunset</string>
-				<key>subtext</key>
-				<string>You'll need to create a new token</string>
-				<key>text</key>
-				<string>Remove Github API Token</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>243E7984-591E-4FBF-85E0-DD02B53B4234</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>githubtoken</string>
@@ -173,6 +152,27 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>githubunset</string>
+				<key>subtext</key>
+				<string>You'll need to create a new token</string>
+				<key>text</key>
+				<string>Remove Github API Token</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>243E7984-591E-4FBF-85E0-DD02B53B4234</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
