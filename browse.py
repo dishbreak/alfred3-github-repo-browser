@@ -6,10 +6,12 @@ import re
 API_KEY = "b847ca9e4368fa1c7fb1b84e11417da6a92f9198"
 API_ROOT = "https://api.github.com"
 API_USER = "dishbreak"
+PAGE_SIZE = 100
 
 
-def fetch_page(repo_url, token):
+def fetch_page(repo_url, token, page_size):
 	headers = {"Authorization": "token {}".format(token)}
+	params = {"per_page": 100}
 	response = web.get(repo_url, headers=headers)
 	response.raise_for_status()
 	repos = response.json()
@@ -25,13 +27,13 @@ def parse_header(header):
 	return links
 
 
-def fetch_repos(api_root, token):
-	repo_url = "{}/user/repos".format(API_ROOT)
+def fetch_repos(api_root, token, page_size):
+	repo_url = "{}/user/repos".format(api_root)
 	paging = True
 
 	repos = []
 	while paging:
-		page, link_header = fetch_page(repo_url, token)
+		page, link_header = fetch_page(repo_url, token, page_size)
 		repos += page
 		links = parse_header(link_header)
 		paging = "last" in links
@@ -42,9 +44,7 @@ def fetch_repos(api_root, token):
 def main(wf):
 	query = wf.args[0] if len(wf.args) else None
 
-
-
-	repos = wf.cached_data('repos', lambda: fetch_repos(API_ROOT, API_KEY), max_age=300)
+	repos = wf.cached_data('repos', lambda: fetch_repos(API_ROOT, API_KEY, PAGE_SIZE), max_age=300)
 
 	if query:
 		repos = wf.filter(query, repos, key=lambda x: x['name'])
