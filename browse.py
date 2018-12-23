@@ -1,6 +1,22 @@
+#!/usr/bin/env python
+
+"""
+List Github Repos.
+
+Usage:
+	browse.py token API_TOKEN
+	browse.py list QUERY
+	browse.py list
+
+Commands:
+	token - configure a Personal Access Token
+	list - show repos using the configrued token
+
+"""
 import sys
-from workflow import web, Workflow, ICON_WEB
+from workflow import web, Workflow, ICON_WEB, PasswordNotFound
 from collections import defaultdict
+from docopt import docopt
 import re
 
 API_KEY = "b847ca9e4368fa1c7fb1b84e11417da6a92f9198"
@@ -8,6 +24,7 @@ API_ROOT = "https://api.github.com"
 API_USER = "dishbreak"
 PAGE_SIZE = 100
 
+__KEYCHAIN_GITHUB_TOKEN = "github_token"
 
 def fetch_page(repo_url, token, page_size):
 	headers = {"Authorization": "token {}".format(token)}
@@ -41,10 +58,26 @@ def fetch_repos(api_root, token, page_size):
 
 	return repos
 
-def main(wf):
-	query = wf.args[0] if len(wf.args) else None
+def parse_args(args):
+	return docopt(__doc__, args)
 
-	repos = wf.cached_data('repos', lambda: fetch_repos(API_ROOT, API_KEY, PAGE_SIZE), max_age=300)
+def main(wf):
+	args = parse_args(wf.args)
+
+	if args['token']:
+		wf.save_password(__KEYCHAIN_GITHUB_TOKEN, args['API_TOKEN'])
+
+		return 0
+
+	try:
+		api_key = wf.get_password(__KEYCHAIN_GITHUB_TOKEN)
+	except PasswordNotFound as e:
+		raise Exception('Missing Github token, set with githubtoken')
+
+
+	query = args['QUERY'] if 'QUERY' in args else None
+
+	repos = wf.cached_data('repos', lambda: fetch_repos(API_ROOT, api_key, PAGE_SIZE), max_age=300)
 
 	if query:
 		repos = wf.filter(query, repos, key=lambda x: x['name'])

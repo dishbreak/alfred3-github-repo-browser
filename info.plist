@@ -8,11 +8,37 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,6 +71,82 @@
 	<string>Github Launcher</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>githubtoken</string>
+				<key>subtext</key>
+				<string>Paste in token and press Enter</string>
+				<key>text</key>
+				<string>Set Github Token</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>githubtoken</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>python browse.py token "$@"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -102,7 +204,7 @@
 				<key>runningsubtext</key>
 				<string>Retrieving results from Github API...</string>
 				<key>script</key>
-				<string>python browse.py "$@"</string>
+				<string>python browse.py list "$@"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -147,6 +249,20 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</key>
+		<dict>
+			<key>xpos</key>
+			<integer>720</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<dict>
 			<key>xpos</key>
@@ -160,6 +276,13 @@
 			<integer>420</integer>
 			<key>ypos</key>
 			<integer>470</integer>
+		</dict>
+		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>70</integer>
 		</dict>
 		<key>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</key>
 		<dict>
