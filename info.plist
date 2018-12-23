@@ -47,6 +47,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>65C8DC57-238E-4707-9579-BC46AE8588C3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B5E9EED2-3274-42EB-ABE1-806F460800AB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
 		<array/>
 		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
@@ -83,7 +96,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python browse.py clean</string>
+				<string>python browse.py unset</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -127,7 +140,7 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>githubclean</string>
+				<string>githubunset</string>
 				<key>subtext</key>
 				<string>You'll need to create a new token</string>
 				<key>text</key>
@@ -162,6 +175,50 @@
 			<string>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>githubrefresh</string>
+				<key>subtext</key>
+				<string>Purge the cache and reload repos from API</string>
+				<key>text</key>
+				<string>Refresh Github Repos</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>65C8DC57-238E-4707-9579-BC46AE8588C3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python browse.py refresh</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B5E9EED2-3274-42EB-ABE1-806F460800AB</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -282,16 +339,30 @@
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>330</integer>
 		</dict>
 		<key>50B6DC51-CDED-4014-A88E-DC6054B6BBA4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>580</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>330</integer>
+		</dict>
+		<key>65C8DC57-238E-4707-9579-BC46AE8588C3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>B5E9EED2-3274-42EB-ABE1-806F460800AB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>200</integer>
 		</dict>
 		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
 		<dict>
@@ -310,9 +381,9 @@
 		<key>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>400</integer>
+			<integer>410</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>330</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
