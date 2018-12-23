@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>243E7984-591E-4FBF-85E0-DD02B53B4234</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BFD334CD-F655-4589-BC48-9535956FDC17</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<array>
 			<dict>
@@ -34,19 +47,10 @@
 				<false/>
 			</dict>
 		</array>
+		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
+		<array/>
 		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</key>
 		<array>
 			<dict>
@@ -74,6 +78,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python browse.py token "$@"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -95,55 +122,44 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
+				<key>concurrently</key>
 				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
-				<key>keyword</key>
-				<string>githubtoken</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
 				<key>script</key>
-				<string>python browse.py token "$@"</string>
+				<string>python browse.py clean</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
+			<string>BFD334CD-F655-4589-BC48-9535956FDC17</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>githubclean</string>
+				<key>subtext</key>
+				<string>You'll need to create a new token</string>
+				<key>text</key>
+				<string>Remove Github API Token</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.hidealfred</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</string>
+			<string>243E7984-591E-4FBF-85E0-DD02B53B4234</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -256,40 +272,47 @@
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
-		<key>28D7A705-8D8E-4D1C-A2E2-93EE135F1E47</key>
+		<key>243E7984-591E-4FBF-85E0-DD02B53B4234</key>
 		<dict>
 			<key>xpos</key>
-			<integer>720</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>90</integer>
+			<integer>270</integer>
 		</dict>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>30</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>440</integer>
 		</dict>
 		<key>50B6DC51-CDED-4014-A88E-DC6054B6BBA4</key>
 		<dict>
 			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>440</integer>
+		</dict>
+		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
+		<dict>
+			<key>xpos</key>
 			<integer>420</integer>
 			<key>ypos</key>
-			<integer>470</integer>
+			<integer>270</integer>
 		</dict>
 		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
 		<dict>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>420</integer>
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
 		<key>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<integer>400</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>440</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
