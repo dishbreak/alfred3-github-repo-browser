@@ -83,50 +83,6 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python browse.py token "$@"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>githubtoken</string>
-				<key>subtext</key>
-				<string>Paste in token and press Enter</string>
-				<key>text</key>
-				<string>Set Github Token</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
 				<string>python browse.py clean</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -139,6 +95,29 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>BFD334CD-F655-4589-BC48-9535956FDC17</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python browse.py token "$@"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C638C224-F83D-4D49-9308-47DC0C168ABD</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -160,6 +139,27 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>243E7984-591E-4FBF-85E0-DD02B53B4234</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>githubtoken</string>
+				<key>subtext</key>
+				<string>Paste in token and press Enter</string>
+				<key>text</key>
+				<string>Set Github Token</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -275,9 +275,9 @@
 		<key>243E7984-591E-4FBF-85E0-DD02B53B4234</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>270</integer>
+			<integer>70</integer>
 		</dict>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<dict>
@@ -296,9 +296,9 @@
 		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
 		<dict>
 			<key>xpos</key>
-			<integer>420</integer>
+			<integer>780</integer>
 			<key>ypos</key>
-			<integer>270</integer>
+			<integer>70</integer>
 		</dict>
 		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
 		<dict>
