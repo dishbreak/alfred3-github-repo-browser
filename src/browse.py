@@ -76,7 +76,7 @@ def main(wf):
 	try:
 		api_key = wf.get_password(KEYCHAIN_GITHUB_TOKEN)
 	except PasswordNotFound:
-		raise Exception('Missing Github token, set with githubtoken')
+		raise Exception("Missing Github token, set using 'githubsettings' keyword.")
 
 	if args['refresh']:
 		wf.clear_cache(lambda name: name == "{}.cpickle".format(REPO_CACHE))
