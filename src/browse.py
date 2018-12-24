@@ -9,12 +9,14 @@ Usage:
 	browse.py list
 	browse.py unset
 	browse.py refresh
+	browse.py timeout TIMEOUT
 
 Commands:
 	token - configure a Personal Access Token
 	list - show repos using the configrued token
 	unset - remove configured 
 	refresh - flush cache and pick up new repos
+	timeout - set timeout for cache in seconds
 
 """
 import sys
@@ -32,7 +34,7 @@ def parse_args(args):
 	"""
 	return docopt(__doc__, args)
 
-def get_repos(api_key):
+def get_repos(api_key, timeout=0):
 	"""
 	Load repos from cache. If the cache is empty, use the embedded Github library
 	to fetch the needed data.
@@ -40,21 +42,35 @@ def get_repos(api_key):
 	Parameters:
 	- api_token: A github API token
 	"""
-	return wf.cached_data(REPO_CACHE, lambda: fetch_repos(API_ROOT, api_key), max_age=0)
+	return wf.cached_data(REPO_CACHE, lambda: fetch_repos(API_ROOT, api_key), max_age=timeout)
 
 def main(wf):
 	args = parse_args(wf.args)
 
+	if "repos" not in wf.settings:
+		wf.settings["repos"] = { "timeout": 3600 }
+		wf.settings.save()
+
+	wf.logger.info("Timeout is '{}'".format(wf.settings['repos']['timeout']))
 	if args['token']:
 		wf.save_password(KEYCHAIN_GITHUB_TOKEN, args['API_TOKEN'])
-		notify("Saved API Token to Keychain", "Use 'githubunset' to remove.")
+		notify("Saved API Token to Keychain", "Workflow is ready for use!")
 		return 0
 	if args['unset']:
 		try:
 			wf.delete_password(KEYCHAIN_GITHUB_TOKEN)
-			notify("Removed API Token from Keychain", "Use 'githubtoken' to add a new token.")
+			notify("Removed API Token from Keychain", "Add a new token in order to use the workflow.")
 		except PasswordNotFound:
 			wf.logger.info("No token to delete!")
+		return 0
+	if args['timeout']:
+		try:
+			timeout = int(args['TIMEOUT'])
+			wf.settings['repos']['timeout'] = timeout
+			wf.settings.save()
+			notify("Timeout Set", "Accepted new value of '{}'".format(timeout))
+		except ValueError:
+			raise Exception("Got non-numeric input '{}'".format(args['TIMEOUT']))
 		return 0
 
 	try:
@@ -71,7 +87,7 @@ def main(wf):
 
 	query = args['QUERY'] if 'QUERY' in args else None
 
-	repos = get_repos(api_key)
+	repos = get_repos(api_key, wf.settings['repos']['timeout'])
 
 	if query:
 		repos = wf.filter(query, repos, key=lambda x: x['name'])
