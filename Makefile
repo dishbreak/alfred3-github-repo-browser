@@ -4,7 +4,7 @@ src/deps/__init__.py: src/deps
 	cp src/init.make src/deps/__init__.py
 	pip install -r src/requirements.txt -t src/deps/ || rm -f src/deps/__init__.py
 
-src/deps: 
+src/deps:
 	mkdir src/deps
 
 clean:
