@@ -20,7 +20,7 @@ Commands:
 
 """
 import sys
-from deps.workflow import Workflow3, ICON_WEB, PasswordNotFound
+from deps.workflow import Workflow3, ICON_WEB, ICON_INFO, PasswordNotFound
 from deps.workflow.notify import notify
 from deps.docopt import docopt
 from github import fetch_repos
@@ -46,6 +46,13 @@ def get_repos(api_key, timeout=0):
 
 def main(wf):
 	args = parse_args(wf.args)
+
+	if wf.update_available:
+    	# Add a notification to top of Script Filter results
+	    wf.add_item('New version available',
+	                'Action this item to install the update',
+	                autocomplete='workflow:update',
+	                icon=ICON_INFO)
 
 	if "repos" not in wf.settings:
 		wf.settings["repos"] = { "timeout": 3600 }
@@ -102,5 +109,5 @@ def main(wf):
 	wf.send_feedback()
 
 if __name__ == '__main__':
-	wf = Workflow3()
+	wf = Workflow3(update_settings={"github_slug":"dishbreak/alfred3-github-repo-browser"})
 	sys.exit(wf.run(main))
