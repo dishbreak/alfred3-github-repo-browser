@@ -15,9 +15,9 @@ import (
 	"golang.org/x/oauth2"
 )
 
-type TokenCmd struct{}
+type SetTokenCmd struct{}
 
-func (t *TokenCmd) Help() string {
+func (t *SetTokenCmd) Help() string {
 	return `
 Saves a token to the keychain. Note that tokens must be passed in via stdin.
 	`
@@ -28,7 +28,7 @@ const (
 	TokenName = "github-access-token"
 )
 
-func (t *TokenCmd) Run(c *Context) error {
+func (t *SetTokenCmd) Run(c *Context) error {
 	var token string
 	resp := alfred.NewScriptActionResponse()
 
@@ -75,4 +75,28 @@ func GetHttpClient(ctx context.Context) (*http.Client, error) {
 
 	client := oauth2.NewClient(ctx, src)
 	return client, nil
+}
+
+type DeleteTokenCmd struct{}
+
+func (d *DeleteTokenCmd) Help() string {
+	return `
+Deletes the stored Github token from the keyring.	
+	`
+}
+
+const (
+	secretNotFound = "secret not found in keyring"
+)
+
+func (d *DeleteTokenCmd) Run(c *Context) error {
+	resp := alfred.NewScriptActionResponse()
+	defer alfred.RecoverIfErr(resp)
+
+	if err := keyring.Delete(AppName, TokenName); err != nil && err.Error() != secretNotFound {
+		panic(err)
+	}
+
+	resp.SendFeedback()
+	return nil
 }

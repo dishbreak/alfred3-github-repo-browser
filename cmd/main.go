@@ -3,7 +3,10 @@ package main
 import "github.com/alecthomas/kong"
 
 type Context struct{}
-type Cli struct{}
+type Cli struct {
+	SetToken    SetTokenCmd    `cmd:"set-token" help:"Set a GitHub Access Token"`
+	DeleteToken DeleteTokenCmd `cmd:"delete-token" help:"Erase the configured GitHub Access Token"`
+}
 
 const (
 	appName = "gh-browser"
