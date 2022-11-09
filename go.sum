@@ -11,6 +11,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/dishbreak/go-alfred v0.0.0-20221109072748-af678e481fcf h1:UENR4iew2pOxZ6TYKgAMB9M07SrCcfnQXv7+h4ZC9oE=
 github.com/dishbreak/go-alfred v0.0.0-20221109072748-af678e481fcf/go.mod h1:A7x81QIQN8qplrtNi2/znxIN4hD7jvIsv98GyT+UBUg=
+github.com/dishbreak/go-alfred v0.0.0-20221109075631-de780ca143b2 h1:EMZT+kkg48iIhJKiTIabirvWH+WqATiY9jy01s4bmbc=
+github.com/dishbreak/go-alfred v0.0.0-20221109075631-de780ca143b2/go.mod h1:A7x81QIQN8qplrtNi2/znxIN4hD7jvIsv98GyT+UBUg=
 github.com/godbus/dbus/v5 v5.0.6/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/godbus/dbus/v5 v5.1.0 h1:4KLkAxT3aOY8Li4FRJe/KvhoNFFxo0m6fNuFUO8QJUk=
 github.com/godbus/dbus/v5 v5.1.0/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=

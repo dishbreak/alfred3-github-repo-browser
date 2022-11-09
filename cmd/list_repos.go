@@ -69,12 +69,10 @@ func (l *ListReposCommand) Run() error {
 		panic(err)
 	}
 
-	err = cache.Flush()
+	items, err := cache.Get()
 	if err != nil {
 		panic(err)
 	}
-	items, _ := cache.Get()
-
 	for _, item := range items {
 		resp.AddItem(item)
 	}
@@ -89,4 +87,24 @@ func (f *FlushCacheCommand) Help() string {
 	return `
 	Refreshes the repo cache with new data from the Github API.
 	`
+}
+
+func (f *FlushCacheCommand) Run() error {
+	resp := alfred.NewScriptActionResponse()
+	defer alfred.RecoverIfErr(resp)()
+
+	ctx := context.Background()
+
+	cache, err := getRepoCache(ctx)
+	if err != nil {
+		panic(err)
+
+	}
+
+	err = cache.Flush()
+	if err != nil {
+		panic(err)
+	}
+
+	return nil
 }
