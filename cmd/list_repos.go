@@ -69,10 +69,11 @@ func (l *ListReposCommand) Run() error {
 		panic(err)
 	}
 
-	items, err := cache.Get()
+	err = cache.Flush()
 	if err != nil {
 		panic(err)
 	}
+	items, _ := cache.Get()
 
 	for _, item := range items {
 		resp.AddItem(item)

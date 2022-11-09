@@ -500,7 +500,7 @@
 				<key>runningsubtext</key>
 				<string>Retrieving results from Github API...</string>
 				<key>script</key>
-				<string>python src/browse.py list "$@"</string>
+				<string>go run ./cmd/ list-repos</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -774,7 +774,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python src/browse.py unset</string>
+				<string>go run ./cmd/ clear-token</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
