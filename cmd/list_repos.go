@@ -20,7 +20,7 @@ const (
 )
 
 func getRepoCache(ctx context.Context) (*alfred.ItemCache, error) {
-	_, err := GetCacheTimeout()
+	timeout, err := GetCacheTimeout()
 	if err != nil {
 		return nil, err
 	}
@@ -29,7 +29,7 @@ func getRepoCache(ctx context.Context) (*alfred.ItemCache, error) {
 		panic(err)
 	}
 
-	return alfred.NewCache(repoCache, 1, func() ([]alfred.ListItem, error) {
+	return alfred.NewCache(repoCache, timeout, func() ([]alfred.ListItem, error) {
 		opts := &github.RepositoryListOptions{}
 
 		items := make([]alfred.ListItem, 0)
@@ -39,11 +39,14 @@ func getRepoCache(ctx context.Context) (*alfred.ItemCache, error) {
 				return items, err
 			}
 			for _, repo := range repos {
-				items = append(items, alfred.ListItem{
-					Title:    *repo.FullName,
-					Subtitle: *repo.Description,
-					Arg:      *repo.HTMLURL,
-				})
+				item := alfred.ListItem{
+					Title: *repo.FullName,
+					Arg:   *repo.HTMLURL,
+				}
+				if repo.Description != nil {
+					item.Subtitle = *repo.Description
+				}
+				items = append(items, item)
 			}
 			if resp.NextPage == 0 {
 				break
