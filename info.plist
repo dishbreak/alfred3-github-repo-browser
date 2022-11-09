@@ -360,12 +360,14 @@
 			<dict>
 				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
 				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -406,6 +408,8 @@
 				<true/>
 				<key>items</key>
 				<string>[{"title":"Created"},{"title":"Assigned","arg":"assigned"},{"title":"Mentioned","arg":"mentioned"},{"title":"Review Requested","arg":"review-requested"}]</string>
+				<key>matchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>subtext</key>
@@ -427,6 +431,8 @@
 			<dict>
 				<key>argument</key>
 				<string>https://github.com/pulls/{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -440,10 +446,41 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<true/>
+				<key>items</key>
+				<string>[{"title":"Home"},{"title":"Pull Requests","arg":"pulls"},{"title":"Issues","arg":"issues"}]</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Additional Options</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>B1CB50B0-8C45-45E7-BE1B-47627122B324</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -482,34 +519,7 @@
 			<key>uid</key>
 			<string>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</string>
 			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<true/>
-				<key>items</key>
-				<string>[{"title":"Home"},{"title":"Pull Requests","arg":"pulls"},{"title":"Issues","arg":"issues"}]</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Additional Options</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>B1CB50B0-8C45-45E7-BE1B-47627122B324</string>
-			<key>version</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -547,12 +557,14 @@
 			<dict>
 				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
 				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -566,6 +578,8 @@
 			<dict>
 				<key>argument</key>
 				<string></string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>repo_url</key>
@@ -584,6 +598,8 @@
 			<dict>
 				<key>argument</key>
 				<string>{var:repo_url}/{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -660,6 +676,8 @@
 			<dict>
 				<key>argument</key>
 				<string></string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -678,7 +696,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python src/browse.py token "$@"</string>
+				<string>echo "$@" | go run ./cmd/ set-token</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -736,6 +754,8 @@
 			<dict>
 				<key>argument</key>
 				<string></string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -782,6 +802,8 @@
 				<string>[{"title":"Set Github API Token","arg":"token","subtitle":"You'll need this to see any Github data."},{"title":"Clear API Token","arg":"clear","subtitle":"Unset the API token in the Keychain"},{"title":"Set Repo Cache Timeout","arg":"timeout","subtitle":"How often to clear the cache"},{"title":"Refresh Github Caches","arg":"refresh","subtitle":"Data gone stale? We'll fix you up."}]</string>
 				<key>keyword</key>
 				<string>ghsettings</string>
+				<key>matchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>subtext</key>
@@ -851,6 +873,8 @@
 			<dict>
 				<key>argument</key>
 				<string></string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -889,6 +913,8 @@
 			<dict>
 				<key>argument</key>
 				<string></string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict/>
 			</dict>
@@ -926,193 +952,195 @@
 		<key>07AAF3CC-4DC1-414E-8966-9879484BE7F2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<real>560</real>
 			<key>ypos</key>
-			<integer>800</integer>
+			<real>800</real>
 		</dict>
 		<key>0B7DE37E-3B07-438C-8BCE-1310C69E44D1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>680</real>
 			<key>ypos</key>
-			<integer>510</integer>
+			<real>510</real>
 		</dict>
 		<key>0F53131D-6B34-4D7C-8112-998F5C2AED4F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<real>560</real>
 			<key>ypos</key>
-			<integer>90</integer>
+			<real>90</real>
 		</dict>
 		<key>114C67BF-6ECA-4E15-9532-1252AEE9C563</key>
 		<dict>
 			<key>xpos</key>
-			<integer>850</integer>
+			<real>850</real>
 			<key>ypos</key>
-			<integer>380</integer>
+			<real>380</real>
 		</dict>
 		<key>12BB7260-2E56-4DB5-873D-E050A5886265</key>
 		<dict>
 			<key>xpos</key>
-			<integer>850</integer>
+			<real>850</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>195C6BF5-0683-4A56-947B-FAFA9E38EA11</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<real>560</real>
 			<key>ypos</key>
-			<integer>670</integer>
+			<real>670</real>
 		</dict>
 		<key>28191692-145F-4C22-9856-79659AC79C02</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>680</real>
 			<key>ypos</key>
-			<integer>380</integer>
+			<real>380</real>
 		</dict>
 		<key>356A427A-BF3D-485A-9809-BC38A207927F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>850</integer>
+			<real>850</real>
 			<key>ypos</key>
-			<integer>90</integer>
+			<real>90</real>
 		</dict>
 		<key>36C62F5C-F203-4F28-B0F6-B87487747AD6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>780</integer>
+			<real>780</real>
 			<key>ypos</key>
-			<integer>270</integer>
+			<real>270</real>
 		</dict>
 		<key>3DFCB7DC-5C1E-4C19-A888-A82F846027F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>460</integer>
+			<real>460</real>
 			<key>ypos</key>
-			<integer>270</integer>
+			<real>270</real>
 		</dict>
 		<key>3E88CEBA-CD2C-412F-A336-9DB0B3EE507E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<real>560</real>
 			<key>ypos</key>
-			<integer>410</integer>
+			<real>410</real>
 		</dict>
 		<key>40E1C4FA-862A-4E09-8176-6A14715365EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<real>60</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>58141BD6-613A-4192-BFE7-A68BC7459270</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<real>470</real>
 			<key>ypos</key>
-			<integer>800</integer>
+			<real>800</real>
 		</dict>
 		<key>6801047A-27E6-4D8B-BE06-374AA558DF5D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<real>470</real>
 			<key>ypos</key>
-			<integer>670</integer>
+			<real>670</real>
 		</dict>
 		<key>70C9A313-0C10-492A-B846-81A8BC59E1C2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<real>560</real>
 			<key>ypos</key>
-			<integer>540</integer>
+			<real>540</real>
 		</dict>
 		<key>8BC229CA-590C-4730-A00A-FB18B9022996</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<real>60</real>
 			<key>ypos</key>
-			<integer>90</integer>
+			<real>90</real>
 		</dict>
 		<key>A18377A1-C5A7-4516-AD32-8A9A5449AB4B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>770</integer>
+			<real>770</real>
 			<key>ypos</key>
-			<integer>120</integer>
+			<real>120</real>
 		</dict>
 		<key>B1CB50B0-8C45-45E7-BE1B-47627122B324</key>
 		<dict>
 			<key>xpos</key>
-			<integer>570</integer>
+			<real>570</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>B5E9EED2-3274-42EB-ABE1-806F460800AB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>680</real>
 			<key>ypos</key>
-			<integer>770</integer>
+			<real>770</real>
 		</dict>
 		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>680</real>
 			<key>ypos</key>
-			<integer>640</integer>
+			<real>640</real>
 		</dict>
 		<key>C2D0FE02-675C-4700-984D-43C43582FE4A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<real>470</real>
 			<key>ypos</key>
-			<integer>410</integer>
+			<real>410</real>
 		</dict>
 		<key>C638C224-F83D-4D49-9308-47DC0C168ABD</key>
 		<dict>
 			<key>xpos</key>
-			<integer>850</integer>
+			<real>850</real>
 			<key>ypos</key>
-			<integer>510</integer>
+			<real>510</real>
 		</dict>
 		<key>CE6E6B3C-A1E2-4B1F-904C-0E6873B8CEF6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<real>270</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>DB05DD8C-037F-4C8D-9DB7-5170A8654064</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<real>470</real>
 			<key>ypos</key>
-			<integer>540</integer>
+			<real>540</real>
 		</dict>
 		<key>E77DC1F2-1253-4599-A84F-0A442781064C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<real>270</real>
 			<key>ypos</key>
-			<integer>90</integer>
+			<real>90</real>
 		</dict>
 		<key>EC1388C2-28BA-4448-B472-2C30FCA46F03</key>
 		<dict>
 			<key>xpos</key>
-			<integer>240</integer>
+			<real>240</real>
 			<key>ypos</key>
-			<integer>640</integer>
+			<real>640</real>
 		</dict>
 		<key>F13F7036-A27B-4884-BAF2-8A641CCCC977</key>
 		<dict>
 			<key>xpos</key>
-			<integer>30</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>640</integer>
+			<real>640</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>webaddress</key>
 	<string>kotcherlakota.org</string>
 </dict>

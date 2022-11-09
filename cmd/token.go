@@ -6,11 +6,11 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"net/http"
 	"os"
 	"strings"
 
 	"github.com/dishbreak/go-alfred/alfred"
+	"github.com/google/go-github/v47/github"
 	"github.com/zalando/go-keyring"
 	"golang.org/x/oauth2"
 )
@@ -24,15 +24,14 @@ Saves a token to the keychain. Note that tokens must be passed in via stdin.
 }
 
 const (
-	AppName   = "alfred-github-browser"
-	TokenName = "github-access-token"
+	tokenName = "github-access-token"
 )
 
 func (t *SetTokenCmd) Run(c *Context) error {
 	var token string
 	resp := alfred.NewScriptActionResponse()
 
-	defer alfred.RecoverIfErr(resp)
+	defer alfred.RecoverIfErr(resp)()
 
 	if stat, _ := os.Stdin.Stat(); (stat.Mode() & os.ModeCharDevice) == 0 {
 		b, err := ioutil.ReadAll(os.Stdin)
@@ -52,7 +51,7 @@ func (t *SetTokenCmd) Run(c *Context) error {
 		panic(errors.New("cowardly refusing to set an empty token"))
 	}
 
-	if err := keyring.Set(AppName, TokenName, token); err != nil {
+	if err := keyring.Set(appName, tokenName, token); err != nil {
 		panic(err)
 	}
 
@@ -61,8 +60,8 @@ func (t *SetTokenCmd) Run(c *Context) error {
 	return nil
 }
 
-func GetHttpClient(ctx context.Context) (*http.Client, error) {
-	token, err := keyring.Get(AppName, TokenName)
+func getGithubClient(ctx context.Context) (*github.Client, error) {
+	token, err := keyring.Get(appName, tokenName)
 	if err != nil {
 		return nil, err
 	}
@@ -73,8 +72,13 @@ func GetHttpClient(ctx context.Context) (*http.Client, error) {
 		},
 	)
 
-	client := oauth2.NewClient(ctx, src)
-	return client, nil
+	httpClient := oauth2.NewClient(ctx, src)
+	if err != nil {
+		return nil, err
+	}
+
+	ghClient := github.NewClient(httpClient)
+	return ghClient, nil
 }
 
 type DeleteTokenCmd struct{}
@@ -85,15 +89,11 @@ Deletes the stored Github token from the keyring.
 	`
 }
 
-const (
-	secretNotFound = "secret not found in keyring"
-)
-
 func (d *DeleteTokenCmd) Run(c *Context) error {
 	resp := alfred.NewScriptActionResponse()
-	defer alfred.RecoverIfErr(resp)
+	defer alfred.RecoverIfErr(resp)()
 
-	if err := keyring.Delete(AppName, TokenName); err != nil && err.Error() != secretNotFound {
+	if err := keyring.Delete(appName, tokenName); err != nil {
 		panic(err)
 	}
 

@@ -4,8 +4,9 @@ import "github.com/alecthomas/kong"
 
 type Context struct{}
 type Cli struct {
-	SetToken    SetTokenCmd    `cmd:"set-token" help:"Set a GitHub Access Token"`
-	DeleteToken DeleteTokenCmd `cmd:"delete-token" help:"Erase the configured GitHub Access Token"`
+	SetToken    SetTokenCmd      `cmd:"set-token" help:"Set a GitHub Access Token"`
+	DeleteToken DeleteTokenCmd   `cmd:"delete-token" help:"Erase the configured GitHub Access Token"`
+	ListRepos   ListReposCommand `cmd:"list-repos" help:"List matching GitHub repos"`
 }
 
 const (
