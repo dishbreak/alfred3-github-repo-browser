@@ -42,6 +42,7 @@ func getRepoCache(ctx context.Context) (*alfred.ItemCache, error) {
 				item := alfred.ListItem{
 					Title: *repo.FullName,
 					Arg:   *repo.HTMLURL,
+					Valid: true,
 				}
 				if repo.Description != nil {
 					item.Subtitle = *repo.Description

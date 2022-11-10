@@ -4,7 +4,7 @@ module github.com/dishbreak/alfred3-github-repo-browser
 
 require (
 	github.com/alecthomas/kong v0.7.0
-	github.com/dishbreak/go-alfred v0.0.0-20221109075631-de780ca143b2
+	github.com/dishbreak/go-alfred v0.0.0-20221109081311-2d9f07302e99
 	github.com/google/go-github/v47 v47.1.0
 	github.com/zalando/go-keyring v0.2.1
 	golang.org/x/oauth2 v0.1.0

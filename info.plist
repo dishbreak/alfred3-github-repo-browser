@@ -201,6 +201,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B5E9EED2-3274-42EB-ABE1-806F460800AB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F0D163B1-BD9B-4DFA-8FA7-1F34B10A4427</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BFD334CD-F655-4589-BC48-9535956FDC17</key>
 		<array/>
 		<key>C2D0FE02-675C-4700-984D-43C43582FE4A</key>
@@ -500,7 +513,7 @@
 				<key>runningsubtext</key>
 				<string>Retrieving results from Github API...</string>
 				<key>script</key>
-				<string>go run ./cmd/ list-repos</string>
+				<string>$HOME/go/bin/alfred-gh-repo list-repos</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -893,7 +906,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python src/browse.py refresh</string>
+				<string>go run ./cmd/ flush-cache</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -907,6 +920,27 @@
 			<string>B5E9EED2-3274-42EB-ABE1-806F460800AB</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Repo Flushed!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>F0D163B1-BD9B-4DFA-8FA7-1F34B10A4427</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1130,6 +1164,13 @@
 			<real>240</real>
 			<key>ypos</key>
 			<real>640</real>
+		</dict>
+		<key>F0D163B1-BD9B-4DFA-8FA7-1F34B10A4427</key>
+		<dict>
+			<key>xpos</key>
+			<real>860</real>
+			<key>ypos</key>
+			<real>775</real>
 		</dict>
 		<key>F13F7036-A27B-4884-BAF2-8A641CCCC977</key>
 		<dict>
